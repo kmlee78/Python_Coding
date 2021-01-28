@@ -1,19 +1,15 @@
 class Node:
     """노드 클래스"""
-
     def __init__(self, data):
         self.data = data
         self.next = None
 
 
-
 class LinkedList:
     """링크드 리스트 클래스"""
-
     def __init__(self):
         self.head = None
         self.tail = None
-
 
     def find_node_at(self, index):
         """접근 연산 메소드"""
@@ -21,7 +17,6 @@ class LinkedList:
         for _ in range(index):
             iterator = iterator.next
         return iterator
-
 
     def find_node_with_data(self, data):
         """링크드 리스트 탐색 연산 메소드. 해당 노드가 없으면 None을 리턴"""
@@ -31,7 +26,6 @@ class LinkedList:
                 return iterator
             iterator = iterator.next
         return None
-
 
     def append(self, data):
         """링크드 리스트 추가 연산 메소드"""
@@ -43,7 +37,6 @@ class LinkedList:
             self.tail.next = new_node
             self.tail = new_node
 
-
     def insert_after(self, previous_node, data):
         """링크드 리스트 삽입 연산 메소드"""
         new_node = Node(data)
@@ -53,7 +46,6 @@ class LinkedList:
         else:                               # 그렇지 않은 경우
             new_node.next = previous_node.next
             previous_node.next = new_node
-
 
     def prepend(self, data):
         """링크드 리스트의 가장 앞에 데이터 삽입"""
@@ -65,7 +57,6 @@ class LinkedList:
             new_node.next = self.head
             self.head = new_node
 
-
     def delete_after(self, previous_node):
         """링크드 리스트 삭제 연산 메소드"""
         if previous_node.next is self.tail:     # 지우려는 노드가 tail인 경우
@@ -73,7 +64,6 @@ class LinkedList:
             self.tail = previous_node
         else:
             previous_node.next = previous_node.next.next
-
     
     def pop_left(self):
         """링크드 리스트의 가장 앞 노드 삭제 메소드. 링크드 리스트에 항상 노드가 있다고 가정"""
@@ -85,7 +75,6 @@ class LinkedList:
             self.head = self.head.next
         return pop_data.data
 
-
     def __str__(self):
         """링크드 리스트 안의 내용물 출력"""
         res_str = ""
@@ -94,7 +83,6 @@ class LinkedList:
             res_str += iterator.data + "  "
              iterator = iterator.next
         return res_str
-
 
 
 #링크드 리스트 만들고 데이터 추가
