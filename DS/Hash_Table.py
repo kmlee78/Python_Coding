@@ -93,10 +93,8 @@ class HashTable:
     def __str__(self):
         """해시 테이블 문자열 메소드"""
         res_str = ""
-
         for linked_list in self._table:
             res_str += str(linked_list)
-
         return res_str[:-1]
 
  
