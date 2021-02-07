@@ -19,7 +19,6 @@ class BinarySearchTree:
     def __init__(self):
         self.root = None
  
-
     def insert(self, data):
         """데이터 삽입 메소드"""
         new_node = Node(data) 
@@ -27,7 +26,6 @@ class BinarySearchTree:
         if self.root is None:
             self.root = new_node
             return
-
         iterator = self.root
         while iterator is not None:
             if data > iterator.data:
@@ -41,7 +39,6 @@ class BinarySearchTree:
                     return
                 iterator = iterator.left_child
 
-
     def search(self, data):
         """이진 탐색 트리 탐색 메소드. 해당 노드를 리턴"""
         iterator = self.root
@@ -54,12 +51,10 @@ class BinarySearchTree:
                 iterator = iterator.left_child
         return None
 
-
     def delete(self, data):
         """이진 탐색 트리 삭제 메소드"""
         node_to_delete = self.search(data)  # 삭제할 노드를 가지고 온다
         parent_node = node_to_delete.parent  # 삭제할 노드의 부모 노드
-
         # 경우 1: 지우려는 노드가 leaf 노드일 때
         if node_to_delete.left_child is None and node_to_delete.right_child is None:
             if node_delete is self.root:
@@ -69,7 +64,6 @@ class BinarySearchTree:
                     parent_node.left_child = None
                 else:
                     parent_node.right_child = None
-
         # 경우 2: 지우려는 노드가 자식이 하나인 노드일 때:
         elif node_to_delete.left_child is None:  # 지우려는 노드가 오른쪽 자식만 있을 때
             if node_to_delete is self.root:
@@ -83,7 +77,6 @@ class BinarySearchTree:
             else:
                 parent_node.right_child = node_to_delete.right_child
                 node_to_delete.right_child.parent = parent_node
-
         elif node_to_delete.right_child is None:  # 지우려는 노드가 왼쪽 자식만 있을 때
             if node_to_delete is self.root:
                 self.root = node_to_delete.left_child
@@ -96,14 +89,12 @@ class BinarySearchTree:
             else:
                 parent_node.right_child = node_to_delete.left_child
                 node_to_delete.left_child.parent = parent_node
-
         # 경우 3: 지우려는 노드가 2개의 자식이 있을 때
         else:
             successor = self.find_min(node_to_delete.right_child)
             temp = successor.data
             self.delete(successor.data)
             node_to_delete.data = temp
-
 
     @staticmethod
     def find_min(node):
