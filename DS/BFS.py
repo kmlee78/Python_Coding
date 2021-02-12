@@ -1,4 +1,5 @@
 class Node:
+    """그래프 노드 클래스"""
     def __init__(self, name):
         self.name = name
         self.adjacent = []
@@ -10,12 +11,11 @@ class Node:
 
 
 def bfs(graph, start_node):
+    """너비 우선 탐색 알고리즘"""
     queue = deque()  # 빈 큐 생성
-
     # 일단 모든 노드를 방문하지 않은 노드로 표시
     for node in graph.values():
-        node.visited = False
-        
+        node.visited = False   
     queue.append(start_node)
     while queue:
         temp = queue.popleft()
