@@ -1,3 +1,5 @@
+from collections import deque
+
 class Node:
     """그래프 노드 클래스"""
     def __init__(self, name):
@@ -17,6 +19,7 @@ def bfs(graph, start_node):
     for node in graph.values():
         node.visited = False   
     queue.append(start_node)
+    
     while queue:
         temp = queue.popleft()
         print(temp.name)
