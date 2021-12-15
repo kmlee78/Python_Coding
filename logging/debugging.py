@@ -8,11 +8,11 @@ def set_root_logger(level):
     return logger
 
 
-def set_custom_logger(name, propagte, *handlers):
+def set_custom_logger(name, propagate, *handlers):
     logger = logging.getLogger(name)
     for handler in handlers:
         logger.addHandler(handler)
-    logger.propagate = propagte
+    logger.propagate = propagate
     return logger
 
 
@@ -31,7 +31,7 @@ def level_test(logger):
 
 
 def main():
-    rootlogger = set_root_logger(level=logging.WARNING)
+    rootlogger = set_root_logger(level=logging.DEBUG)
 
     format_handler = StreamHandler()
     formatter = Formatter(
@@ -40,14 +40,14 @@ def main():
     format_handler.setFormatter(formatter)
     file_handler = logging.FileHandler("my.log")
 
-    custumlogger = set_custom_logger("my_logger", False, format_handler, file_handler)
+    custumlogger = set_custom_logger("my_logger", True, format_handler, file_handler)
 
     level_test(custumlogger)
     custumlogger.debug("debug log printed")
-    custumlogger.info("debug log printed")
-    custumlogger.warning("debug log printed")
-    custumlogger.error("warning log printed")
-    custumlogger.critical("error log printed")
+    custumlogger.info("info log printed")
+    custumlogger.warning("warning log printed")
+    custumlogger.error("error log printed")
+    custumlogger.critical("critical log printed")
     logging.error("log from root logger")
 
 
